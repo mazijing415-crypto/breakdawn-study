@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>破晓 - 青少年党史剧本创作专家</title>
+  <!-- 引入外部资源 -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+  <!-- 配置Tailwind自定义主题 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#C8102E', // 中国红
+            secondary: '#DAA520', // 金色
+            dark: '#1A202C', // 深蓝黑
+            light: '#F7FAFC', // 浅灰
+            accent: '#3182CE', // 蓝色点缀
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            serif: ['"Noto Serif SC"', 'serif'],
+          },
+          animation: {
+            'float': 'float 3s ease-in-out infinite',
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' },
+            }
+          }
+        },
+      }
+    }
+  </script>
+  <!-- 自定义工具类 -->
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      .text-shadow-lg {
+        text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      }
+      .bg-gradient-red {
+        background: linear-gradient(135deg, #C8102E 0%, #9A0018 100%);
+      }
+      .bg-blur {
+        backdrop-filter: blur(8px);
+      }
+      .card-hover {
+        transition: all 0.3s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+    }
+  </style>
+  <!-- 引入中文字体 -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body class="font-sans bg-light text-dark antialiased">
+  <!-- 导航栏 -->
+  <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300">
+    <nav class="bg-transparent py-4 px-6 md:px-12">
+      <div class="container mx-auto flex justify-between items-center">
+        <!-- Logo -->
+        <a href="#" class="flex items-center space-x-2">
+          <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+            <i class="fa fa-book text-white text-xl"></i>
+          </div>
+          <span class="text-xl md:text-2xl font-serif font-bold text-white text-shadow-lg">破晓</span>
+        </a>
+        
+        <!-- 桌面导航 -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#about" class="text-white hover:text-secondary transition-colors font-medium">关于我们</a>
+          <a href="#market" class="text-white hover:text-secondary transition-colors font-medium">市场背景</a>
+          <a href="#products" class="text-white hover:text-secondary transition-colors font-medium">产品线</a>
+          <a href="#peripherals" class="text-white hover:text-secondary transition-colors font-medium">周边产品</a>
+          <a href="#principle" class="text-white hover:text-secondary transition-colors font-medium">创作理念</a>
+          <a href="#contact" class="text-white hover:text-secondary transition-colors font-medium">联系我们</a>
+          <a href="#contact" class="bg-secondary hover:bg-secondary/90 text-dark font-bold py-2 px-6 rounded-full transition-all transform hover:scale-105">
+            合作咨询
+          </a>
+        </div>
+        
+        <!-- 移动端菜单按钮 -->
+        <button id="menuBtn" class="md:hidden text-white text-2xl">
+          <i class="fa fa-bars"></i>
+        </button>
+      </div>
+    </nav>
+    
+    <!-- 移动端导航菜单 -->
+    <div id="mobileMenu" class="md:hidden bg-dark/95 bg-blur hidden">
+      <div class="container mx-auto py-6 px-6 flex flex-col space-y-6">
+        <a href="#about" class="text-white hover:text-secondary transition-colors font-medium text-lg py-2 border-b border-gray-700">关于我们</a>
+        <a href="#market" class="text-white hover:text-secondary transition-colors font-medium text-lg py-2 border-b border-gray-700">市场背景</a>
+        <a href="#products" class="text-white hover:text-secondary transition-colors font-medium text-lg py-2 border-b border-gray-700">产品线</a>
+        <a href="#peripherals" class="text-white hover:text-secondary transition-colors font-medium text-lg py-2 border-b border-gray-700">周边产品</a>
+        <a href="#principle" class="text-white hover:text-secondary transition-colors font-medium text-lg py-2 border-b border-gray-700">创作理念</a>
+        <a href="#contact" class="text-white hover:text-secondary transition-colors font-medium text-lg py-2 border-b border-gray-700">联系我们</a>
+        <a href="#contact" class="bg-secondary hover:bg-secondary/90 text-dark font-bold py-3 px-8 rounded-full transition-all text-center">
+          合作咨询
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 英雄区 -->
+  <section class="relative h-screen flex items-center justify-center overflow-hidden">
+    <!-- 背景视频/图片 -->
+    <div class="absolute inset-0 z-0">
+      <img src="https://picsum.photos/id/1035/1920/1080" alt="党史场景背景" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-dark/60"></div>
+    </div>
+    
+    <!-- 内容 -->
+    <div class="container mx-auto px-6 md:px-12 relative z-10 text-center">
+      <h1 class="text-[clamp(2.5rem,8vw,5rem)] font-serif font-black text-white leading-tight text-shadow-lg mb-6">
+        穿越红色岁月<br><span class="text-secondary">传承初心使命</span>
+      </h1>
+      <p class="text-[clamp(1rem,3vw,1.5rem)] text-gray-100 max-w-3xl mx-auto mb-10 text-shadow">
+        坚持"大处尊重史实，细处充盈情感"，用剧本点亮青少年的党史认知之旅
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="#products" class="bg-primary hover:bg-primary/90 text-white font-bold py-4 px-8 rounded-full transition-all transform hover:scale-105 text-lg">
+          探索产品
+        </a>
+        <a href="#contact" class="bg-transparent border-2 border-white hover:border-secondary hover:text-secondary text-white font-bold py-4 px-8 rounded-full transition-all transform hover:scale-105 text-lg">
+          合作洽谈
+        </a>
+      </div>
+      
+      <!-- 滚动指示 -->
+      <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <a href="#about" class="text-white text-3xl">
+          <i class="fa fa-angle-down"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 关于我们 -->
+  <section id="about" class="py-20 bg-white">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="flex flex-col md:flex-row items-center gap-12">
+        <div class="md:w-1/2">
+          <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-serif font-bold text-dark mb-6">
+            关于破晓
+          </h2>
+          <div class="w-20 h-1 bg-primary mb-8"></div>
+          <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+            我们是一家专注于青少年党史剧本创作的专业工作室，致力于通过创新的剧本形式，让青少年在沉浸式体验中感悟党史、传承红色基因。
+          </p>
+          <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+            我们坚信，党史教育不应是枯燥的知识灌输，而应是生动的情感体验。通过精心打造的剧本产品，让青少年在角色扮演中理解党的奋斗历程，在情感共鸣中传承红色精神。
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <div class="flex items-center space-x-2">
+              <i class="fa fa-check-circle text-primary text-xl"></i>
+              <span class="text-gray-700">尊重史实</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <i class="fa fa-check-circle text-primary text-xl"></i>
+              <span class="text-gray-700">情感充盈</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <i class="fa fa-check-circle text-primary text-xl"></i>
+              <span class="text-gray-700">青少年视角</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <i class="fa fa-check-circle text-primary text-xl"></i>
+              <span class="text-gray-700">沉浸式体验</span>
+            </div>
+          </div>
+        </div>
+        <div class="md:w-1/2 grid grid-cols-2 gap-4">
+          <img src="https://picsum.photos/id/1068/600/800" alt="工作室场景" class="rounded-lg shadow-lg w-full h-64 object-cover card-hover">
+          <img src="https://picsum.photos/id/1071/600/800" alt="党史剧本创作" class="rounded-lg shadow-lg w-full h-64 object-cover mt-8 card-hover">
+          <img src="https://picsum.photos/id/1073/600/800" alt="红色主题表演" class="rounded-lg shadow-lg w-full h-64 object-cover card-hover">
+          <img src="https://picsum.photos/id/1082/600/800" alt="党史场景再现" class="rounded-lg shadow-lg w-full h-64 object-cover mt-8 card-hover">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 市场背景与研究意义 -->
+  <section id="market" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="text-center mb-16">
+        <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-serif font-bold text-dark mb-4">
+          市场背景与研究意义
+        </h2>
+        <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+        <p class="text-lg text-gray-700 max-w-3xl mx-auto">
+          红色文化教育已成为时代刚需，我们的产品旨在解决当前教育痛点，创新党史传播方式
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+        <!-- 政策与时代要求 -->
+        <div class="bg-white rounded-xl shadow-lg p-8 md:p-10 card-hover">
+          <div class="flex items-center mb-6">
+            <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+              <i class="fa fa-flag text-primary text-2xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold">政策与时代共同要求</h3>
+          </div>
+          <div class="prose lg:prose-lg text-gray-700">
+            <p class="mb-4">开展青少年红色文化教育，是响应国家“为党育人、为国育才”战略、落实“立德树人”根本任务的必然要求。</p>
+            <p>亦是应对代际变迁、在复杂信息环境中筑牢青少年意识形态防线的时代刚需，具有重要的现实意义和战略价值。</p>
+          </div>
+          
+          <!-- 青少年视角解读 -->
+          <div class="mt-8 bg-primary/5 p-6 rounded-lg">
+            <h4 class="font-bold text-lg mb-3 flex items-center">
+              <i class="fa fa-lightbulb-o text-primary mr-2"></i>
+              为什么这对我们很重要？
+            </h4>
+            <p class="text-gray-700 text-sm">
+              作为青少年，了解红色文化不仅能让我们懂得今天的幸福生活来之不易，还能帮我们树立正确的价值观，在纷繁复杂的信息中保持清醒的判断～
+            </p>
+          </div>
+        </div>
+        
+        <!-- 现状痛点 -->
+        <div class="bg-white rounded-xl shadow-lg p-8 md:p-10 card-hover">
+          <div class="flex items-center mb-6">
+            <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+              <i class="fa fa-exclamation-triangle text-primary text-2xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold">当前教育现状痛点</h3>
+          </div>
+          <div class="space-y-6">
+            <div class="flex">
+              <div class="flex-shrink-0 w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold mr-4">1</div>
+              <div>
+                <h4 class="font-bold text-lg mb-2">叙事体系不匹配</h4>
+                <p class="text-gray-700">当前红色文化叙事体系与中小学生所推崇的叙事体系存在差异，导致理解偏差和重视不足的问题。</p>
+              </div>
+            </div>
+            <div class="flex">
+              <div class="flex-shrink-0 w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold mr-4">2</div>
+              <div>
+                <h4 class="font-bold text-lg mb-2">信息过载难筛选</h4>
+                <p class="text-gray-700">数字时代信息膨胀，中小学生面对海量信息产生信息过载现象，难以分清主次、辨别真伪。</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 互动小调查 -->
+          <div class="mt-8">
+            <h4 class="font-bold text-lg mb-4">你是否也有这样的困扰？</h4>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <button class="bg-gray-100 hover:bg-primary hover:text-white transition-colors py-3 px-6 rounded-lg flex-1 font-medium">
+                是的，红色文化有点难理解
+              </button>
+              <button class="bg-gray-100 hover:bg-primary hover:text-white transition-colors py-3 px-6 rounded-lg flex-1 font-medium">
+                信息太多，不知道该看什么
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 研究意义 -->
+      <div class="bg-white rounded-xl shadow-lg p-8 md:p-12">
+        <h3 class="text-2xl font-bold mb-8 text-center">我们的研究意义</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-primary/5 p-6 rounded-lg text-center card-hover">
+            <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+              <i class="fa fa-graduation-cap text-primary text-2xl"></i>
+            </div>
+            <h4 class="text-xl font-bold mb-3">提升教育实效</h4>
+            <p class="text-gray-700">解决传统红色教育模式缺陷，构建“体验式+互动式”的党史教育新模式</p>
+          </div>
+          
+          <div class="bg-primary/5 p-6 rounded-lg text-center card-hover">
+            <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+              <i class="fa fa-heart text-primary text-2xl"></i>
+            </div>
+            <h4 class="text-xl font-bold mb-3">传承红色文化</h4>
+            <p class="text-gray-700">让社会主义红色文化在青少年中落地生根，代代相传，增强文化自信</p>
+          </div>
+          
+          <div class="bg-primary/5 p-6 rounded-lg text-center card-hover">
+            <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+              <i class="fa fa-lightbulb-o text-primary text-2xl"></i>
+            </div>
+            <h4 class="text-xl font-bold mb-3">创新教育载体</h4>
+            <p class="text-gray-700">尝试与探索新型党史教育载体，让红色文化传播更符合青少年认知习惯</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 创作理念 -->
+  <section id="principle" class="py-20 bg-white">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="text-center mb-16">
+        <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-serif font-bold text-dark mb-4">
+          创作理念
+        </h2>
+        <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+        <p class="text-lg text-gray-700 max-w-3xl mx-auto">
+          我们坚守核心原则，用心打造每一部党史作品，让红色历史活起来，让革命精神传下去
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- 原则1 -->
+        <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+            <i class="fa fa-history text-primary text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-4">尊重党史史实</h3>
+          <p class="text-gray-700">
+            大处不偏离党史框架，细节有史料支撑，确保党史的真实性与严肃性
+          </p>
+        </div>
+        
+        <!-- 原则2 -->
+        <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+            <i class="fa fa-heart text-primary text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-4">充盈红色情感</h3>
+          <p class="text-gray-700">
+            聚焦革命先辈内心世界，通过细腻的情感刻画，引发青少年的情感共鸣
+          </p>
+        </div>
+        
+        <!-- 原则3 -->
+        <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+            <i class="fa fa-flash text-primary text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-4">党史关键瞬间</h3>
+          <p class="text-gray-700">
+            捕捉党史关键节点，以小见大，展现党的奋斗历程中的伟大抉择与担当
+          </p>
+        </div>
+        
+        <!-- 原则4 -->
+        <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+            <i class="fa fa-graduation-cap text-primary text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-4">青少年视角</h3>
+          <p class="text-gray-700">
+            用青少年易于理解和接受的方式讲述党史，让党史教育更具吸引力
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 产品线 -->
+  <section id="products" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="text-center mb-16">
+        <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-serif font-bold text-dark mb-4">
+          核心产品线
+        </h2>
+        <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+        <p class="text-lg text-gray-700 max-w-3xl mx-auto">
+          三大创新党史剧本产品，玩着学党史！适配不同场景，满足多样需求
+        </p>
+        
+        <!-- 进度条装饰 -->
+        <div class="max-w-2xl mx-auto mt-8">
+          <div class="flex justify-between text-sm font-medium mb-2">
+            <span>剧本解锁进度</span>
+            <span>3/3 全部解锁</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-2.5">
+            <div class="bg-primary h-2.5 rounded-full" style="width: 100%"></div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <!-- 产品线一：广播剧剧本 -->
+        <div class="bg-gradient-to-br from-gray-50 to-white rounded-2xl shadow-xl overflow-hidden card-hover">
+          <div class="h-60 overflow-hidden">
+            <img src="https://picsum.photos/id/1019/800/600" alt="党史广播剧剧本" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+          </div>
+          <div class="p-8">
+            <div class="inline-block bg-primary/10 text-primary font-bold py-1 px-4 rounded-full mb-4">
+              产品线一
+            </div>
+            <h3 class="text-2xl font-bold mb-4">党史广播剧剧本</h3>
+            <h4 class="text-secondary font-semibold mb-4">课间15分钟，闭眼听党史</h4>
+            <ul class="space-y-3 mb-6">
+              <li class="flex items-start bg-gray-50 p-3 rounded-lg">
+                <i class="fa fa-headphones text-primary mt-1 mr-3 text-xl animate-pulse"></i>
+                <div>
+                  <span class="font-bold text-dark">沉浸式听觉体验</span>
+                  <p class="text-gray-700 text-sm mt-1">革命场景音效+先辈独白，仿佛穿越时空～</p>
+                </div>
+              </li>
+              <li class="flex items-start bg-gray-50 p-3 rounded-lg">
+                <i class="fa fa-check text-primary mt-1 mr-3"></i>
+                <div>
+                  <span class="font-bold text-dark">低成本易传播</span>
+                  <p class="text-gray-700 text-sm mt-1">无需电子产品，校园广播就能播放</p>
+                </div>
+              </li>
+              <li class="flex items-start bg-gray-50 p-3 rounded-lg">
+                <i class="fa fa-clock-o text-primary mt-1 mr-3"></i>
+                <div>
+                  <span class="font-bold text-dark">时长友好</span>
+                  <p class="text-gray-700 text-sm mt-1">3-4集系列，每集15-20分钟，适配课间</p>
+                </div>
+              </li>
+            </ul>
+            
+            <!-- 试听按钮 -->
+            <button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 px-6 rounded-lg transition-all flex items-center justify-center">
+              <i class="fa fa-play-circle mr-2"></i> 试听剧本片段
+            </button>
+          </div>
+        </div>
+        
+        <!-- 产品线二：情景表演剧本 -->
+        <div class="bg-gradient-to-br from-gray-50 to-white rounded-2xl shadow-xl overflow-hidden card-hover">
+          <div class="h-60 overflow-hidden">
+            <img src="https://picsum.photos/id/1062/800/600" alt="党史情景表演剧本" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+          </div>
+          <div class="p-8">
+            <div class="inline-block bg-primary/10 text-primary font-bold py-1 px-4 rounded-full mb-4">
+              产品线二
+            </div>
+            <h3 class="text-2xl font-bold mb-4">“我是小红军”情景表演剧本</h3>
+            <h4 class="text-secondary font-semibold mb-4">班级展演必备，轻松拿大奖</h4>
+            <ul class="space-y-3 mb-6">
+              <li class="flex items-start bg-gray-50 p-3 rounded-lg">
+                <i class="fa fa-theater-masks text-primary mt-1 mr-3 text-xl"></i>
+                <div>
+                  <span class="font-bold text-dark">简单易排演</span>
+                  <p class="text-gray-700 text-sm mt-1">台词口语化，动作指示明确，新手也能演</p>
+                </div>
+              </li>
+              <li class="flex items-start bg-gray-50 p-3 rounded-lg">
+                <i class="fa fa-book text-primary mt-1 mr-3"></i>
+                <div>
+                  <span class="font-bold text-dark">专业指导手册</span>
+                  <p class="text-gray-700 text-sm mt-1">五维排演指导，老师省心，学生开心</p>
+                </div>
+              </li>
+              <li class="flex items-start bg-gray-50 p-3 rounded-lg">
+                <i class="fa fa-users text-primary mt-1 mr-3"></i>
+                <div>
+                  <span class="font-bold text-dark">角色灵活</span>
+                  <p class="text-gray-700 text-sm mt-1">可根据班级人数调整角色，适配各种场景</p>
+                </div>
+              </li>
+            </ul>
+            
+            <!-- 剧本片段按钮 -->
+            <button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 px-6 rounded-lg transition-all flex items-center justify-center">
+              <i class="fa fa-file-text-o mr-2"></i> 查看剧本片段
+            </button>
+          </div>
+        </div>
+        
+        <!-- 产品线三：沉浸式剧本 -->
+        <div class="bg-gradient-to-br from-gray-50 to-white rounded-2xl shadow-xl overflow-hidden card-hover">
+          <div class="h-60 overflow-hidden">
+            <img src="https://picsum.photos/id/1059/800/600" alt="党史沉浸式剧本" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+          </div>
+          <div class="p-8">
+            <div class="inline-block bg-primary/10 text-primary font-bold py-1 px-4 rounded-full mb-4">
+              产品线三
+            </div>
+            <h3 class="text-2xl font-bold mb-4">“重走长征路”党史沉浸式剧本</h3>
+            <h4 class="text-secondary font-semibold mb-4">你的选择，决定剧情走向</h4>
+            <ul class="space-y-3 mb-6">
+              <li class="flex items-start bg-gray-50 p-3 rounded-lg">
+                <i class="fa fa-gamepad text-primary mt-1 mr-3 text-xl"></i>
+                <div>
+                  <span class="font-bold text-dark">互动抉择时刻</span>
+                  <p class="text-gray-700 text-sm mt-1">关键节点投票决定剧情，超有参与感</p>
+                </div>
+              </li>
+              <li class="flex items-start bg-gray-50 p-3 rounded-lg">
+                <i class="fa fa-map-signs text-primary mt-1 mr-3"></i>
+                <div>
+                  <span class="font-bold text-dark">多结局体验</span>
+                  <p class="text-gray-700 text-sm mt-1">不同选择解锁不同党史知识点</p>
+                </div>
+              </li>
+              <li class="flex items-start bg-gray-50 p-3 rounded-lg">
+                <i class="fa fa-lightbulb-o text-primary mt-1 mr-3"></i>
+                <div>
+                  <span class="font-bold text-dark">理解历史复杂性</span>
+                  <p class="text-gray-700 text-sm mt-1">体会先辈艰难抉择，加深党史认知</p>
+                </div>
+              </li>
+            </ul>
+            
+            <!-- 剧情选择小测试 -->
+            <div class="bg-gray-50 p-4 rounded-lg mb-4">
+              <h5 class="font-bold mb-3">剧情小测试：长征路上你会？</h5>
+              <div class="flex flex-col gap-2">
+                <button class="bg-white border border-gray-300 hover:border-primary rounded-lg py-2 px-4 text-left transition-colors">
+                  A. 坚持带领伤员一起前进
+                </button>
+                <button class="bg-white border border-gray-300 hover:border-primary rounded-lg py-2 px-4 text-left transition-colors">
+                  B. 先派通讯员求援，再继续前行
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 周边产品 -->
+  <section id="peripherals" class="py-20 bg-white">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="text-center mb-16">
+        <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-serif font-bold text-dark mb-4">
+          周边产品
+        </h2>
+        <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+        <p class="text-lg text-gray-700 max-w-3xl mx-auto">
+          集卡、收藏、互动！让红色文化触手可及，学习更有乐趣
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <!-- 收藏卡牌 -->
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden group card-hover">
+          <div class="relative h-60 overflow-hidden">
+            <img src="https://picsum.photos/id/1025/800/600" alt="红色精神谱系收藏卡牌" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 rotate-2">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+              <div class="p-6">
+                <span class="text-white text-lg font-bold">点击查看SSR稀有卡</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-8">
+            <h3 class="text-2xl font-bold mb-4">“红色精神谱系”收藏卡牌</h3>
+            <div class="mb-6">
+              <h4 class="font-semibold text-gray-900 mb-3 flex items-center">
+                <i class="fa fa-star text-secondary mr-2"></i> 集卡也能学党史！
+              </h4>
+              <div class="grid grid-cols-4 gap-2 mb-4">
+                <div class="bg-gray-100 rounded-lg p-2 text-center text-xs">
+                  <div class="w-full h-16 bg-gray-200 rounded mb-1"></div>
+                  <span>C级</span>
+                </div>
+                <div class="bg-gray-100 rounded-lg p-2 text-center text-xs">
+                  <div class="w-full h-16 bg-gray-300 rounded mb-1"></div>
+                  <span>R级</span>
+                </div>
+                <div class="bg-gray-100 rounded-lg p-2 text-center text-xs">
+                  <div class="w-full h-16 bg-yellow-200 rounded mb-1"></div>
+                  <span>SR级</span>
+                </div>
+                <div class="bg-gray-100 rounded-lg p-2 text-center text-xs">
+                  <div class="w-full h-16 bg-red-200 rounded mb-1"></div>
+                  <span>SSR级</span>
+                </div>
+              </div>
+              <ul class="space-y-2">
+                <li class="flex items-center text-sm">
+                  <i class="fa fa-check text-primary mr-2"></i>
+                  <span class="text-gray-700">革命人物卡+党史事件卡+红色精神卡</span>
+                </li>
+                <li class="flex items-center text-sm">
+                  <i class="fa fa-check text-primary mr-2"></i>
+                  <span class="text-gray-700">烫金、UV、浮雕等特殊工艺</span>
+                </li>
+                <li class="flex items-center text-sm">
+                  <i class="fa fa-check text-primary mr-2"></i>
+                  <span class="text-gray-700">主题盲盒，惊喜不断</span>
+                </li>
+              </ul>
+            </div>
+            
+            <!-- 抽奖互动 -->
+            <div class="bg-primary/5 p-4 rounded-lg">
+              <h5 class="font-bold text-sm mb-2">输入年级，抽取专属卡牌！</h5>
+              <div class="flex">
+                <input type="text" placeholder="例如：初二" class="flex-1 border border-gray-300 rounded-l-lg px-3 py-2 text-sm">
+                <button class="bg-primary text-white px-4 rounded-r-lg">
+                  抽奖
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 互动道具盒 -->
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden group card-hover">
+          <div class="relative h-60 overflow-hidden">
+            <img src="https://picsum.photos/id/1040/800/600" alt="党史情景再现互动道具盒" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+              <div class="p-6">
+                <span class="text-white text-lg font-bold">党史主题化设计，沉浸式体验</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-8">
+            <h3 class="text-2xl font-bold mb-4">“党史情景再现”互动道具盒</h3>
+            <div class="mb-6">
+              <h4 class="font-semibold text-gray-900 mb-3 flex items-center">
+                <i class="fa fa-gift text-secondary mr-2"></i> 开箱即玩，趣味十足！
+              </h4>
+              <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                <h5 class="font-bold text-sm mb-2">长征主题盒包含：</h5>
+                <ul class="space-y-2 text-sm">
+                  <li class="flex items-center">
+                    <i class="fa fa-map-o text-primary mr-2"></i>
+                    <span class="text-gray-700">仿旧红军长征路线图</span>
+                  </li>
+                  <li class="flex items-center">
+                    <i class="fa fa-envelope text-primary mr-2"></i>
+                    <span class="text-gray-700">密信与显影纸（趣味解密）</span>
+                  </li>
+                  <li class="flex items-center">
+                    <i class="fa fa-cutlery text-primary mr-2"></i>
+                    <span class="text-gray-700">干粮袋模型+"革命糖豆"</span>
+                  </li>
+                  <li class="flex items-center">
+                    <i class="fa fa-id-card-o text-primary mr-2"></i>
+                    <span class="text-gray-700">红军身份牌（多种职务可选）</span>
+                  </li>
+                </ul>
+              </div>
+              <p class="text-gray-700 text-sm">环保材料，安全无毒，放心使用～</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 文创产品 -->
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden group card-hover">
+          <div class="relative h-60 overflow-hidden">
+            <img src="https://picsum.photos/id/1069/800/600" alt="红色文创周边产品" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+              <div class="p-6">
+                <span class="text-white text-lg font-bold">实用与收藏兼具</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-8">
+            <h3 class="text-2xl font-bold mb-4">红色主题文创产品</h3>
+            <div class="mb-6">
+              <h4 class="font-semibold text-gray-900 mb-3 flex items-center">
+                <i class="fa fa-shopping-bag text-secondary mr-2"></i> 学习生活都能用！
+              </h4>
+              <div class="grid grid-cols-2 gap-4 mb-4">
+                <div class="bg-gray-50 rounded-lg p-3 text-center">
+                  <i class="fa fa-book text-primary text-2xl mb-2"></i>
+                  <h5 class="font-bold text-sm">学习文具类</h5>
+                  <p class="text-gray-600 text-xs mt-1">党史笔记本、书签等</p>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-3 text-center">
+                  <i class="fa fa-tshirt text-primary text-2xl mb-2"></i>
+                  <h5 class="font-bold text-sm">生活用品类</h5>
+                  <p class="text-gray-600 text-xs mt-1">帆布袋、T恤、水杯等</p>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-3 text-center">
+                  <i class="fa fa-trophy text-primary text-2xl mb-2"></i>
+                  <h5 class="font-bold text-sm">荣誉激励类</h5>
+                  <p class="text-gray-600 text-xs mt-1">成就徽章、奖状、立牌等</p>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-3 text-center">
+                  <i class="fa fa-cookie text-primary text-2xl mb-2"></i>
+                  <h5 class="font-bold text-sm">特色产品类</h5>
+                  <p class="text-gray-600 text-xs mt-1">主题零食、纪念礼品等</p>
+                </div>
+              </div>
+              <p class="text-gray-700 text-sm">校企合作设计，品质有保障～</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 合作优势 -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="text-center mb-16">
+        <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-serif font-bold text-dark mb-4">
+          合作优势
+        </h2>
+        <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+        <p class="text-lg text-gray-700 max-w-3xl mx-auto">
+          我们提供全方位的党史教育合作支持，与您携手共创红色教育新生态
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl p-8 border border-gray-200 card-hover transform transition-transform hover:rotate-1">
+          <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+            <i class="fa fa-handshake-o text-primary text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-4">定制化党史服务</h3>
+          <p class="text-gray-700">
+            可根据学校特色、党史教学需求定制专属党史剧本及周边产品，满足个性化红色教育需求
+          </p>
+        </div>
+        
+        <div class="bg-white rounded-xl p-8 border border-gray-200 card-hover transform transition-transform hover:-rotate-1">
+          <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+            <i class="fa fa-support text-primary text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-4">全程党史教育支持</h3>
+          <p class="text-gray-700">
+            提供专业的党史剧本排演指导、红色道具使用培训、党史主题活动策划支持，确保教育效果最大化
+          </p>
+        </div>
+        
+        <div class="bg-white rounded-xl p-8 border border-gray-200 card-hover transform transition-transform hover:rotate-1">
+          <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+            <i class="fa fa-line-chart text-primary text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-4">可持续合作模式</h3>
+          <p class="text-gray-700">
+            建立长期合作关系，持续更新党史剧本内容与红色周边产品，共同推动党史教育创新发展
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 青少年交流区 -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="text-center mb-16">
+        <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-serif font-bold text-dark mb-4">
+          青少年交流区
+        </h2>
+        <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+        <p class="text-lg text-gray-700 max-w-3xl mx-auto">
+          分享你的想法，和同龄人一起交流党史学习心得～
+        </p>
+      </div>
+      
+      <div class="max-w-4xl mx-auto">
+        <!-- 留言表单 -->
+        <div class="bg-gray-50 rounded-xl p-8 mb-10">
+          <h3 class="text-xl font-bold mb-6">你想通过什么形式学党史？</h3>
+          <form class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-gray-700 mb-2 text-sm">昵称（匿名也可）</label>
+                <input type="text" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm" placeholder="例如：党史小达人">
+              </div>
+              <div>
+                <label class="block text-gray-700 mb-2 text-sm">年级</label>
+                <select class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm">
+                  <option value="">请选择年级</option>
+                  <option value="primary">小学</option>
+                  <option value="junior">初中</option>
+                  <option value="senior">高中</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label class="block text-gray-700 mb-2 text-sm">你的想法</label>
+              <textarea rows="4" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm" placeholder="你喜欢我们的产品吗？还有什么建议？快来告诉我们～"></textarea>
+            </div>
+            <button type="submit" class="bg-primary hover:bg-primary/90 text-white font-bold py-3 px-6 rounded-lg transition-all">
+              提交留言
+            </button>
+          </form>
+        </div>
+        
+        <!-- 留言列表 -->
+        <div class="space-y-6">
+          <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+            <div class="flex justify-between items-start mb-3">
+              <div class="flex items-center">
+                <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-3">
+                  <span class="font-bold text-primary">小</span>
+                </div>
+                <div>
+                  <h4 class="font-bold">党史小先锋</h4>
+                  <p class="text-gray-500 text-xs">初中二年级 · 3天前</p>
+                </div>
+              </div>
+              <div class="flex items-center space-x-4">
+                <button class="text-gray-400 hover:text-primary">
+                  <i class="fa fa-thumbs-up"></i> <span class="text-xs ml-1">28</span>
+                </button>
+              </div>
+            </div>
+            <p class="text-gray-700 text-sm">我特别喜欢那个沉浸式剧本！感觉自己真的穿越到了长征时期，能亲身参与决策，比单纯看书有意思多了～ 希望能出更多主题的剧本！</p>
+          </div>
+          
+          <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+            <div class="flex justify-between items-start mb-3">
+              <div class="flex items-center">
+                <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-3">
+                  <span class="font-bold text-primary">明</span>
+                </div>
+                <div>
+                  <h4 class="font-bold">明明</h4>
+                  <p class="text-gray-500 text-xs">高中一年级 · 1周前</p>
+                </div>
+              </div>
+              <div class="flex items-center space-x-4">
+                <button class="text-gray-400 hover:text-primary">
+                  <i class="fa fa-thumbs-up"></i> <span class="text-xs ml-1">15</span>
+                </button>
+              </div>
+            </div>
+            <p class="text-gray-700 text-sm">收藏卡牌太赞了！我已经集齐了10张SR卡，每张卡背后都有党史知识点，和同学互换卡牌的时候还能一起学习，不知不觉就记住了很多历史事件～</p>
+          </div>
+          
+          <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+            <div class="flex justify-between items-start mb-3">
+              <div class="flex items-center">
+                <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-3">
+                  <span class="font-bold text-primary">琪</span>
+                </div>
+                <div>
+                  <h4 class="font-bold">琪琪</h4>
+                  <p class="text-gray-500 text-xs">初中一年级 · 2周前</p>
+                </div>
+              </div>
+              <div class="flex items-center space-x-4">
+                <button class="text-gray-400 hover:text-primary">
+                  <i class="fa fa-thumbs-up"></i> <span class="text-xs ml-1">32</span>
+                </button>
+              </div>
+            </div>
+            <p class="text-gray-700 text-sm">我们班用情景剧剧本参加了学校的红色主题展演，获得了一等奖！剧本内容简单易懂，排演起来也不复杂，老师和同学都很喜欢～ 希望能出更多适合班级表演的剧本！</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 联系我们 -->
+  <section id="contact" class="py-20 bg-dark text-white">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="flex flex-col md:flex-row gap-12">
+        <div class="md:w-1/2">
+          <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-serif font-bold mb-6">
+            联系我们
+          </h2>
+          <div class="w-20 h-1 bg-secondary mb-8"></div>
+          <p class="text-lg text-gray-300 mb-10 leading-relaxed">
+            无论您是学校、教育机构，还是有意向合作的伙伴，我们都期待与您携手，共同为青少年打造优质的党史教育产品。
+          </p>
+          
+          <div class="space-y-6 mb-10">
+            <div class="flex items-start">
+              <div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="fa fa-map-marker text-secondary text-xl"></i>
+              </div>
+              <div>
+                <h4 class="text-xl font-bold mb-1">地址</h4>
+                <p class="text-gray-300">大连市沙河口区尖山街217号</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="fa fa-phone text-secondary text-xl"></i>
+              </div>
+              <div>
+                <h4 class="text-xl font-bold mb-1">电话</h4>
+                <p class="text-gray-300">18734907719</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="fa fa-envelope text-secondary text-xl"></i>
+              </div>
+              <div>
+                <h4 class="text-xl font-bold mb-1">邮箱</h4>
+                <p class="text-gray-300">contact@breakdawn.com</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="flex space-x-4">
+            <a href="#" class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center hover:bg-secondary hover:text-dark transition-all">
+              <i class="fa fa-weixin text-xl"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center hover:bg-secondary hover:text-dark transition-all">
+              <i class="fa fa-weibo text-xl"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center hover:bg-secondary hover:text-dark transition-all">
+              <i class="fa fa-qq text-xl"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center hover:bg-secondary hover:text-dark transition-all">
+              <i class="fa fa-linkedin text-xl"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="md:w-1/2 bg-white/5 rounded-xl p-8 backdrop-blur-sm">
+          <h3 class="text-2xl font-bold mb-6 text-white">党史教育合作咨询</h3>
+          <form class="space-y-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label for="name" class="block text-gray-300 mb-2">姓名</label>
+                <input type="text" id="name" class="w-full bg-white/10 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-secondary" placeholder="请输入您的姓名">
+              </div>
+              <div>
+                <label for="phone" class="block text-gray-300 mb-2">电话</label>
+                <input type="tel" id="phone" class="w-full bg-white/10 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-secondary" placeholder="请输入您的电话">
+              </div>
+            </div>
+            
+            <div>
+              <label for="organization" class="block text-gray-300 mb-2">单位/机构名称</label>
+              <input type="text" id="organization" class="w-full bg-white/10 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-secondary" placeholder="请输入您的单位/机构名称">
+            </div>
+            
+            <div>
+              <label for="cooperation" class="block text-gray-300 mb-2">合作意向</label>
+              <select id="cooperation" class="w-full bg-white/10 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-secondary">
+                <option value="">请选择合作意向</option>
+                <option value="script">党史剧本采购</option>
+                <option value="custom">党史定制化服务</option>
+                <option value="peripheral">红色周边产品合作</option>
+                <option value="other">其他党史教育合作</option>
+              </select>
+            </div>
+            
+            <div>
+              <label for="message" class="block text-gray-300 mb-2">留言</label>
+              <textarea id="message" rows="4" class="w-full bg-white/10 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-secondary" placeholder="请详细描述您的党史教育需求或合作意向"></textarea>
+            </div>
+            
+            <button type="submit" class="w-full bg-secondary hover:bg-secondary/90 text-dark font-bold py-4 px-8 rounded-lg transition-all transform hover:scale-[1.02] text-lg">
+              提交咨询
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="bg-black text-gray-400 py-12">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+        <div>
+          <div class="flex items-center space-x-2 mb-6">
+            <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+              <i class="fa fa-book text-white text-xl"></i>
+            </div>
+            <span class="text-xl font-serif font-bold text-white">破晓</span>
+          </div>
+          <p class="mb-6">
+            专注青少年党史剧本创作，让红色历史活起来，让革命精神传下去
+          </p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fa fa-weixin text-xl"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fa fa-weibo text-xl"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fa fa-qq text-xl"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <h4 class="text-white text-lg font-bold mb-6">快速链接</h4>
+          <ul class="space-y-3">
+            <li><a href="#about" class="hover:text-white transition-colors">关于我们</a></li>
+            <li><a href="#market" class="hover:text-white transition-colors">市场背景</a></li>
+            <li><a href="#products" class="hover:text-white transition-colors">产品线</a></li>
+            <li><a href="#peripherals" class="hover:text-white transition-colors">周边产品</a></li>
+            <li><a href="#principle" class="hover:text-white transition-colors">创作理念</a></li>
+            <li><a href="#contact" class="hover:text-white transition-colors">联系我们</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="text-white text-lg font-bold mb-6">产品中心</h4>
+          <ul class="space-y-3">
+            <li><a href="#" class="hover:text-white transition-colors">党史广播剧剧本</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">党史情景表演剧本</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">党史沉浸式剧本</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">红色精神收藏卡牌</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">党史互动道具盒</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="text-white text-lg font-bold mb-6">联系方式</h4>
+          <ul class="space-y-3">
+            <li class="flex items-center">
+              <i class="fa fa-map-marker mr-2"></i>
+              <span>大连市沙河口区尖山街217号</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fa fa-phone mr-2"></i>
+              <span>18734907719</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fa fa-envelope mr-2"></i>
+              <span>contact@breakdawn.com</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fa fa-clock-o mr-2"></i>
+              <span>周一至周五 9:00-18:00</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <p>© 2025 破晓 版权所有</p>
+        <div class="flex space-x-6 mt-4 md:mt-0">
+          <a href="#" class="hover:text-white transition-colors">隐私政策</a>
+          <a href="#" class="hover:text-white transition-colors">服务条款</a>
+          <a href="#" class="hover:text-white transition-colors">法律声明</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 回到顶部按钮 -->
+  <button id="backToTop" class="fixed bottom-8 right-8 bg-primary hover:bg-primary/90 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all transform hover:scale-110 opacity-0 invisible">
+    <i class="fa fa-arrow-up"></i>
+  </button>
+
+  <!-- JavaScript -->
+  <script>
+    // 导航栏滚动效果
+    const navbar = document.getElementById('navbar');
+    const backToTop = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 100) {
+        navbar.classList.add('bg-dark/95', 'bg-blur', 'shadow-lg');
+        navbar.classList.remove('bg-transparent');
+        
+        backToTop.classList.remove('opacity-0', 'invisible');
+        backToTop.classList.add('opacity-100', 'visible');
+      } else {
+        navbar.classList.remove('bg-dark/95', 'bg-blur', 'shadow-lg');
+        navbar.classList.add('bg-transparent');
+        
+        backToTop.classList.add('opacity-0', 'invisible');
+        backToTop.classList.remove('opacity-100', 'visible');
+      }
+    });
+    
+    // 移动端菜单
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    menuBtn.addEventListener('click', function() {
+      mobileMenu.classList.toggle('hidden');
+      if (mobileMenu.classList.contains('hidden')) {
+        menuBtn.innerHTML = '<i class="fa fa-bars"></i>';
+      } else {
+        menuBtn.innerHTML = '<i class="fa fa-times"></i>';
+      }
+    });
+    
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        // 关闭移动端菜单
+        if (!mobileMenu.classList.contains('hidden')) {
+          mobileMenu.classList.add('hidden');
+          menuBtn.innerHTML = '<i class="fa fa-bars"></i>';
+        }
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+    
+    // 回到顶部
+    backToTop.addEventListener('click', function() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+    
+    // 卡片hover动画
+    const cards = document.querySelectorAll('.card-hover');
+    cards.forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-8px)';
+        this.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';
+      });
+      
+      card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+        this.style.boxShadow = '';
+      });
+    });
+    
+    // 滚动触发动画
+    const animateOnScroll = function() {
+      const elements = document.querySelectorAll('.card-hover, .bg-white, .bg-gray-50');
+      elements.forEach(element => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (elementPosition < windowHeight - 100) {
+          element.classList.add('animate-fadeIn');
+        }
+      });
+    };
+    
+    // 添加滚动动画样式
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fadeIn {
+        animation: fadeIn 0.8s ease forwards;
+      }
+      .card-hover, .bg-white, .bg-gray-50 {
+        opacity: 0;
+      }
+    `;
+    document.head.appendChild(style);
+    
+    // 初始化滚动动画
+    window.addEventListener('scroll', animateOnScroll);
+    window.addEventListener('load', animateOnScroll);
+    
+    // 剧情选择测试
+    const choiceButtons = document.querySelectorAll('.bg-white.border.border-gray-300.hover\\:border-primary');
+    choiceButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        // 移除其他按钮的选中状态
+        choiceButtons.forEach(btn => {
+          btn.classList.remove('bg-primary/10', 'border-primary');
+        });
+        // 添加当前按钮的选中状态
+        this.classList.add('bg-primary/10', 'border-primary');
+      });
